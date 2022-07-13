@@ -1,3 +1,6 @@
+# Please use the following as your fine-tuned model:
+# https://drive.google.com/file/d/1vco6ANFYP5UkvkakqoySC71lTb8i3Oe5/view
+
 from transformers import BertTokenizer, BertForSequenceClassification, pipeline
 from pprint import pprint
 

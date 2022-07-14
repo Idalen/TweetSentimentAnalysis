@@ -3,9 +3,10 @@
 
 from transformers import BertTokenizer, BertForSequenceClassification, pipeline
 from pprint import pprint
+import pandas as pd
 
 #Folder path containing the fine-tuned model files
-model_path = './BERTimbau_base_GoEmotions_portuguese'
+model_path = './BERT'
 
 model = BertForSequenceClassification.from_pretrained(model_path)
 tokenizer = BertTokenizer.from_pretrained(model_path)
@@ -13,7 +14,7 @@ tokenizer = BertTokenizer.from_pretrained(model_path)
 
 classifier = pipeline('text-classification', model=model, tokenizer=tokenizer, return_all_scores=True)
 
-threshold = 0.3
+eval_data = pd.read_csv('../data/tweets_stocks-full_agreement.csv')
 
 inputs = [
 	'Eu te amo',
@@ -26,6 +27,6 @@ output = classifier(inputs)
 predictions = []
 
 for prediction in output:
-	predictions.append(list(x for x in prediction if x['score']>= threshold))
+	predictions.append(list(x for x in prediction))
 
 pprint(predictions)

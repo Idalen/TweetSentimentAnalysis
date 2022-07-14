@@ -1,0 +1,59 @@
+Accuracy: 86.83 %
+Precision: 67.51 %
+Recall: 53.73 %
+F1-score: 59.84 %
+
+TRU
+   Accuracy: 79.64 %
+   Precision: 21.15 %
+   Recall: 28.95 %
+   F1-score: 24.44 %
+
+DIS
+   Accuracy: 93.71 %
+   Precision: 60.0 %
+   Recall: 37.5 %
+   F1-score: 46.15 %
+
+JOY
+   Accuracy: 89.52 %
+   Precision: 16.13 %
+   Recall: 35.71 %
+   F1-score: 22.22 %
+
+SAD
+   Accuracy: 85.33 %
+   Precision: 23.08 %
+   Recall: 7.14 %
+   F1-score: 10.91 %
+
+ANT
+   Accuracy: 85.93 %
+   Precision: 10.26 %
+   Recall: 25.0 %
+   F1-score: 14.55 %
+
+SUR
+   Accuracy: 84.73 %
+   Precision: 34.78 %
+   Recall: 18.18 %
+   F1-score: 23.88 %
+
+ANG
+   Accuracy: 94.01 %
+   Precision: 40.0 %
+   Recall: 22.22 %
+   F1-score: 28.57 %
+
+FEA
+   Accuracy: 93.71 %
+   Precision: 40.0 %
+   Recall: 10.0 %
+   F1-score: 16.0 %
+
+NEUTRAL
+   Accuracy: 74.85 %
+   Precision: 100.0 %
+   Recall: 74.77 %
+   F1-score: 85.57 %
+

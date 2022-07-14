@@ -1,8 +1,7 @@
 # Please use the following as your fine-tuned model:
-# https://drive.google.com/file/d/1vco6ANFYP5UkvkakqoySC71lTb8i3Oe5/view
+# https://drive.google.com/file/d/1srCYkS3dMR41BY0Y3WzMpCydJECfonUj/view?usp=sharing
 
 from transformers import BertTokenizer, BertForSequenceClassification, pipeline
-from pprint import pprint
 import pandas as pd
 import numpy as np
 import re
@@ -17,7 +16,7 @@ from sklearn.metrics import recall_score
 threshold = 0.003
 
 # Folder path containing the fine-tuned model files, link suggested above to download from google drive
-model_path = './BERT'
+model_path = './BERT_large'
 
 # Set model, tokenizer and prepare classifier
 model = BertForSequenceClassification.from_pretrained(model_path)

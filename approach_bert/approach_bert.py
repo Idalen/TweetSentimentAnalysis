@@ -7,13 +7,14 @@ import pandas as pd
 import numpy as np
 import re
 from tqdm import tqdm
+import datetime
 
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import f1_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 
-threshold = 0.01
+threshold = 0.003
 
 # Folder path containing the fine-tuned model files, link suggested above to download from google drive
 model_path = './BERT'
@@ -79,5 +80,28 @@ for target in targets:
     df_pred[target] = df_pred[target] > threshold 
     df_true[target] = df_true[target] > threshold
 
-print(df_pred)
-print(df_true)
+y_pred = np.array(df_pred).flatten()
+y_true = np.array(df_true).flatten()
+
+# Write final results to file with datetime name for safety from overwriting
+currentDT = datetime.datetime.now()
+currentDTstr = str(currentDT).replace(" ", "_").replace(":", "_").replace(".", "_").replace("-", "_")
+
+df_pred.to_csv("confusao_pred_"+currentDTstr+".csv", index = False, encoding='utf-8')
+df_true.to_csv("confusao_true_"+currentDTstr+".csv", index = False, encoding='utf-8')
+
+with open("scores_"+currentDTstr+".txt", "w") as f:
+	f.write("Accuracy: "+str(round(100*accuracy_score(y_pred, y_true),2))+' %\n')
+	f.write("Precision: "+str(round(100*precision_score(y_pred, y_true),2))+' %\n')
+	f.write("Recall: "+str(round(100*recall_score(y_pred, y_true),2))+' %\n')
+	f.write("F1-score: "+str(round(100*f1_score(y_pred, y_true), 2))+' %\n')
+	f.write("\n")
+
+	for target in targets:
+		f.write(target)
+		f.write("\n")
+		f.write("   Accuracy: "+str(round(100*accuracy_score(df_pred[target], df_true[target]),2))+' %\n')
+		f.write("   Precision: "+str(round(100*precision_score(df_pred[target], df_true[target]),2))+' %\n')
+		f.write("   Recall: "+str(round(100*recall_score(df_pred[target], df_true[target]),2))+' %\n')
+		f.write("   F1-score: "+str(round(100*f1_score(df_pred[target], df_true[target]), 2))+' %\n')
+		f.write("\n")

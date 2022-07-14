@@ -22,8 +22,8 @@ def clean_tweet(tweet):
     '''
     return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
 
-df_train = pd.read_csv("tweets_stock_clean.csv").set_index('tweet_id')
-df_test = pd.read_csv("tweets_stocks-full_agreement.csv").set_index('tweet_id')
+df_train = pd.read_csv("../data/tweets_stock_clean.csv").set_index('tweet_id')
+df_test = pd.read_csv("../data/tweets_stocks-full_agreement.csv").set_index('tweet_id')
 
 targets = ['TRU', 'DIS', 'JOY', 'SAD', 'ANT', 'SUR', 'ANG', 'FEA']
 
